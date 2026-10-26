@@ -1,0 +1,60 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
+
+    <Style x:Key="DashboardGridStyle" TargetType="Grid">
+        <Setter Property="Margin" Value="14" />
+    </Style>
+
+    <!-- 状態ランプ -->
+    <Style x:Key="LampStyle" TargetType="Ellipse">
+        <Setter Property="Width" Value="10" />
+        <Setter Property="Height" Value="10" />
+        <Setter Property="Margin" Value="8,4,0,4" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!-- 測定値のアイコン -->
+    <Style x:Key="TemperatureIconStyle" TargetType="icon:PackIconMaterial" BasedOn="{StaticResource RowIconStyle}">
+        <Setter Property="Foreground" Value="{StaticResource TemperatureBrush}" />
+    </Style>
+
+    <Style x:Key="HumidityIconStyle" TargetType="icon:PackIconMaterial" BasedOn="{StaticResource RowIconStyle}">
+        <Setter Property="Foreground" Value="{StaticResource HumidityBrush}" />
+    </Style>
+
+    <!-- グラフ -->
+    <Style x:Key="PlotAreaStyle" TargetType="Grid">
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Margin" Value="4" />
+    </Style>
+
+    <Style x:Key="PlotStyle" TargetType="Path">
+        <Setter Property="StrokeThickness" Value="2" />
+        <Setter Property="StrokeLineJoin" Value="Round" />
+    </Style>
+
+    <Style x:Key="TemperaturePlotStyle" TargetType="Path" BasedOn="{StaticResource PlotStyle}">
+        <Setter Property="Stroke" Value="{StaticResource TemperatureBrush}" />
+    </Style>
+
+    <Style x:Key="HumidityPlotStyle" TargetType="Path" BasedOn="{StaticResource PlotStyle}">
+        <Setter Property="Stroke" Value="{StaticResource HumidityBrush}" />
+    </Style>
+
+    <Style x:Key="AxisMaxLabelStyle" TargetType="TextBlock" BasedOn="{StaticResource MutedTextStyle}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+
+    <Style x:Key="AxisMinLabelStyle" TargetType="TextBlock" BasedOn="{StaticResource AxisMaxLabelStyle}">
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+
+    <Style x:Key="PlotEmptyTextStyle" TargetType="TextBlock" BasedOn="{StaticResource MutedTextStyle}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+</ResourceDictionary>

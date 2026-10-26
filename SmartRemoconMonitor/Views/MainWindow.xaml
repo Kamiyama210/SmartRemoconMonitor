@@ -1,0 +1,59 @@
+﻿<Window x:Class="SmartRemoconMonitor.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:vm="clr-namespace:SmartRemoconMonitor.ViewModels"
+        d:DataContext="{d:DesignInstance vm:MainWindowViewModel, IsDesignTimeCreatable=False}"
+        mc:Ignorable="d"
+        Title="SmartRemoconMonitor"
+        FontFamily="BIZ UDGothic, Yu Gothic UI, Meiryo UI, Segoe UI"
+        MinWidth="900" MinHeight="600"
+        WindowState="Maximized">
+
+    <DockPanel LastChildFill="True">
+        <Border DockPanel.Dock="Top" Style="{StaticResource TopLineStyle}" />
+
+        <Border DockPanel.Dock="Bottom" Style="{StaticResource NoticeBarStyle}"
+                Visibility="{Binding StatusMessage, Converter={StaticResource NullToCollapsedConverter}}">
+            <TextBlock Text="{Binding StatusMessage}" Style="{StaticResource NoticeTextStyle}" />
+        </Border>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource SidebarStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Style="{StaticResource MenuToggleButtonStyle}"
+                            AutomationProperties.Name="メニューの開閉"
+                            Command="{Binding ToggleMenuLabelsCommand}">
+                        <icon:PackIconMaterial Kind="Menu" Style="{StaticResource LargeIconStyle}" />
+                    </Button>
+
+                    <ItemsControl Grid.Row="1" Style="{StaticResource MenuListStyle}"
+                                  ItemsSource="{Binding MenuItems}"
+                                  ItemTemplate="{StaticResource MainMenuItemTemplate}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Column="1" Style="{StaticResource ContentAreaStyle}">
+                <ContentControl Content="{Binding Navigation.CurrentViewModel}" Style="{StaticResource ContentHostStyle}" />
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>

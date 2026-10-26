@@ -1,0 +1,40 @@
+<UserControl x:Class="SmartRemoconMonitor.Views.SettingPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:SmartRemoconMonitor.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:SettingPanelViewModel, IsDesignTimeCreatable=False}">
+    <ScrollViewer>
+        <Border Style="{StaticResource PageBorderStyle}">
+            <StackPanel Style="{StaticResource PageContentStyle}">
+                <TextBlock Text="システム設定" Style="{StaticResource TitleTextStyle}" />
+
+                <TextBlock Text="データ出力" Style="{StaticResource HeadingTextStyle}" />
+
+                <Border Style="{StaticResource FormRowStyle}">
+                    <DockPanel LastChildFill="False">
+                        <TextBlock DockPanel.Dock="Left" Text="対象期間" Style="{StaticResource LabelTextStyle}" />
+                        <ComboBox DockPanel.Dock="Right" Style="{StaticResource ComboBoxStyle}"
+                                  ItemsSource="{Binding ExportRangeOptions}"
+                                  SelectedItem="{Binding ExportRange}"
+                                  DisplayMemberPath="Label"
+                                  AutomationProperties.Name="書き出す期間" />
+                    </DockPanel>
+                </Border>
+
+                <Border Style="{StaticResource FormRowStyle}">
+                    <DockPanel LastChildFill="False">
+                        <TextBlock DockPanel.Dock="Left" Text="CSV出力" Style="{StaticResource LabelTextStyle}" />
+                        <Button DockPanel.Dock="Right" Style="{StaticResource ButtonStyle}"
+                                Command="{Binding ExportCsvCommand}" Content="書き出す" />
+                        <TextBlock DockPanel.Dock="Right" Style="{StaticResource CaptionTextStyle}"
+                                   Text="{Binding ExportStatusMessage}" />
+                    </DockPanel>
+                </Border>
+
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
+</UserControl>

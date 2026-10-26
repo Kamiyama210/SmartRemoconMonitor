@@ -1,0 +1,16 @@
+<UserControl x:Class="SmartRemoconMonitor.Views.AppTitlePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:SmartRemoconMonitor.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:AppTitleViewModel, IsDesignTimeCreatable=False}">
+
+    <Border Style="{StaticResource AppTitleCardStyle}">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="{Binding Title}" Style="{StaticResource HeroTextStyle}" />
+            <TextBlock Text="{Binding Version, StringFormat='VERSION: {0}'}" Style="{StaticResource AppVersionTextStyle}" />
+        </StackPanel>
+    </Border>
+</UserControl>
