@@ -57,7 +57,6 @@ flowchart LR
 | DB | Microsoft.Data.Sqlite 10.0.12 |
 | ログ | NLog.Extensions.Logging 6.2.0 |
 | アイコン | MahApps.Metro.IconPacks.Material 6.2.1 |
-| テスト | xUnit 2.9.3 |
 
 ---
 

@@ -22,6 +22,3 @@ dotnet_diagnostic.IDE0051.severity = warning
 dotnet_diagnostic.IDE0052.severity = warning
 dotnet_diagnostic.IDE0059.severity = warning
 dotnet_diagnostic.IDE0060.severity = suggestion
-
-[SmartRemoconMonitor.Tests/**.cs]
-dotnet_diagnostic.CA1707.severity = none
